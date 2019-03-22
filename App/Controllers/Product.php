@@ -2,13 +2,12 @@
 
 namespace App\Controllers;
 
-class ProductController
+class Product extends Controller
 {
-
     protected const TEMPLATE_NAME = 'product.twig';
 
     public function __invoke()
     {
-        return $this->getView([]);
+        echo $this->render([]);
     }
 }
