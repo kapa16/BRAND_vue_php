@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 class IndexController extends Controller
 {
-    public function actionIndex()
+    protected const TEMPLATE_NAME = 'index.twig';
+
+    public function __invoke()
     {
         return $this->getView([]);
     }
