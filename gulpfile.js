@@ -18,7 +18,7 @@ const path = {
     css: 'public/css/',
   },
   src: {
-    js: ['src/js/main.js', 'src/js/single-page.js', 'src/js/slider.js'],//**/*.js',
+    js: ['src/js/main.js', 'src/js/single-page.js', 'src/js/slider.js', 'src/js/Products.js'],//**/*.js',
     style: 'src/scss/*.+(scss|sass)',
   },
   watch: {
@@ -72,7 +72,7 @@ gulp.task('js', () => {
     .pipe(plumber()) // для отслеживания ошибок
     .pipe(rigger()) // импортируем все указанные файлы в main.js
     // .pipe(sourcemaps.init()) //инициализируем sourcemap
-    .pipe(minifyJs()) //минификация
+    // .pipe(minifyJs()) //минификация
     .pipe(rename({
       suffix: '.min'
     }))
@@ -99,7 +99,7 @@ gulp.task('js:babel', () => {
 
 //библиотеки
 gulp.task('libs', () => {
-  return gulp.src(['src/libs/jquery/dist/jquery.min.js', 'src/libs/jquery-ui/jquery-ui.min.js'])
+  return gulp.src(['src/libs/jquery.min.js', 'src/libs/jquery-ui.min.js', 'src/libs/vue.js'])
     .pipe(gulp.dest(path.public.js));
 });
 
@@ -118,7 +118,7 @@ gulp.task('cache:clear', () => {
 gulp.task('public', gulp.parallel(
   'css',
   'js',
-  'js:babel',
+  // 'js:babel',
   'libs'
 ));
 
@@ -127,7 +127,7 @@ gulp.task('css:watch', () => {
   return gulp.watch(path.watch.css, gulp.series('css'));
 });
 gulp.task('js:watch', () => {
-  return gulp.watch(path.watch.js, gulp.parallel('js', 'js:babel'));
+  return gulp.watch(path.watch.js, gulp.parallel('js'));//, 'js:babel'));
 });
 
 gulp.task('watch', gulp.parallel(
