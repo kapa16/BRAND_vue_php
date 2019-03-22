@@ -1,6 +1,7 @@
 {
     "require": {
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "robmorgan/phinx": "^0.10.6"
     },
     "autoload": {
         "psr-4": {
