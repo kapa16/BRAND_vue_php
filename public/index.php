@@ -1,16 +1,9 @@
 <?php
 
-use \App\Controllers\IndexController;
-
 require_once '../vendor/autoload.php';
 
-$page = $_GET['page'] ?? '';
-
-if ($page === 'product') {
-    $controller = new IndexController('product.twig');
-    echo $controller->actionIndex();
-    exit;
-}
-
-$controller = new IndexController('index.twig');
-echo $controller->actionIndex();
+$ctrl = $_GET['ctrl'] ?? 'Index';
+$ctrl = str_replace('_', '\\', $ctrl);
+$className = '\App\Controllers\\' . $ctrl;
+$controller = new $className();
+$controller();
