@@ -1,8 +1,16 @@
 <?php
 
-use \App\Controllers\GalleryImageController;
+use \App\Controllers\IndexController;
 
 require_once '../vendor/autoload.php';
 
-$controller = new GalleryImageController('gallery.twig');
-echo $controller->actionGallery();
+$page = $_GET['page'] ?? '';
+
+if ($page === 'product') {
+    $controller = new IndexController('product.twig');
+    echo $controller->actionIndex();
+    exit;
+}
+
+$controller = new IndexController('index.twig');
+echo $controller->actionIndex();
