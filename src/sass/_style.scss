@@ -1,0 +1,451 @@
+
+
+//===================== Products BEGIN ================
+
+.products-container {
+    text-align: center;
+    margin-bottom: 113px;
+}
+
+.products {
+    @include display_align_justify_direction($display: flex, $align: flex-start, $justify: space-between, $flex-direction: "");
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    overflow: hidden;
+    padding: 4px;
+
+    &-title {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 23px;
+    }
+
+    .products-description {
+        color: $colorTextGrayDarker;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 11px;
+        margin-top: 16px;
+    }
+}
+
+.parent-product-card {
+    @include position_absolute_top_left(98px, 0);
+    @include display_align_justify_direction($display: none, $align: center, $justify: center, $flex-direction: column);
+}
+
+.product-img-wrap,
+.product-img,
+.product-img-mask{
+    width: $widthImgCard;
+    height: $heightImgCards;
+    line-height: 0;
+}
+
+.product-img-wrap{
+    position: relative;
+}
+
+.product-img-mask{
+    display: none;
+    @include position_absolute_top_left($top:0, $left:0);
+    background-color: rgba(0,0,0,0.5);
+}
+
+.product-card-hover {
+    height: 39px;
+    border: 1px solid $colorWhite;
+    background: url("../img/catr-white.svg") no-repeat 12px 10px;
+    color: $colorWhite;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 8px;
+    padding: 15px 13px 14px 43px;
+
+    &:hover {
+        box-shadow: 0 0 8px $colorWhite;
+    }
+    &:active {
+        box-shadow: 0 0 2px $colorWhite;
+    }
+}
+
+.product-card {
+    width: $widthImgCard;
+    position: relative;
+    margin-top: 39px;
+    margin-bottom: 21px;
+    @include display_align_justify_direction($display: flex, $align: "", $justify: center, $flex-direction: "");
+
+    &:hover {
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+    }
+
+    &:hover .parent-product-card {
+        display: flex;
+    }
+
+    &:hover .product-img-mask{
+        display: block;
+    }
+}
+
+.product-card-info {
+    height: 85px;
+    @include display_align_justify_direction($display: flex, $align: space-between, $justify: space-between, $flex-direction: column);
+    padding: 19px 15px 21px 15px;
+    box-sizing: border-box;
+}
+
+.product-name {
+    color: $colorTextDark;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.product-bottom {
+    @include display_align_justify_direction($display: flex, $align: "", $justify: space-between, $flex-direction: "");
+}
+
+.product-price {
+    color: $colorBrand;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.product-rating {
+    color: #e4af48;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.button-browse-all {
+    padding: 18px 22px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 54px;
+    width: auto;
+}
+
+.browse-all-arrow {
+    margin-left: 9px;
+}
+
+//===================== Products END ================
+
+
+
+//===================== Subscribe BEGIN ================
+
+.subscribe {
+    height: $heightSubscribe;
+    margin-top: 97px;
+    background: $colorBgSubscribe url("../img/bgSubscribe.jpg") center no-repeat;
+    background-size: cover;
+    //
+}
+
+.subscribe-container {
+    display: flex;
+    color: $colorTextDark;
+}
+
+.subscribe-slider {
+    display: flex;
+    padding-top: 111px;
+}
+
+.subscribe-slider-img {
+    border-radius: 50%;
+}
+
+.subscribe-slider-content {
+    padding: 12px 28px;
+}
+
+.subscribe-slider-quote {
+    width: 386px;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 26px;
+}
+
+.subscribe-slider-author {
+    margin-top: 19px;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.subscribe-slider-city {
+    font-size: 12px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.subscribe-separator {
+    width: 1px;
+    height: $heightSubscribe;
+    background-color: $colorWhite;
+}
+
+.subscribe-box {
+    @include display_align_justify_direction(flex, center, center, column);
+    margin: 0 auto;
+}
+
+.feature-box-info {
+    overflow: hidden;
+}
+
+.subscribe-box-title,
+.subscribe-box-about {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.subscribe-box-title {
+    font-size: 24px;
+    line-height: 40px;
+}
+
+.subscribe-box-about {
+    font-size: 14px;
+}
+
+.subscribe-form {
+    display: flex;
+    margin-top: 35px;
+}
+
+.subscribe-email,
+.subscribe-button {
+    height: 46px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.subscribe-email {
+    width: 282px;
+    border-radius: 23px 0 0 23px;
+    background-color: $colorBgEmail;
+    opacity: 0.67;
+    color: $colorTextDarkLittleLight;
+    padding: 0 28px;
+}
+
+.subscribe-button {
+    cursor: pointer;
+    width: 104px;
+    border-radius: 0 23px 23px 0;
+    color: $colorWhite;
+    text-align: center;
+}
+
+.subscribe-form:hover .subscribe-email,
+.subscribe-form:hover .subscribe-button {
+    box-shadow: 0 0 8px $colorTextFooterBottom;
+}
+
+.subscribe-email:hover {
+    background: $colorWhite;
+}
+
+.slider-controls {
+    display: flex;
+}
+
+.slider-control-wrap {
+    cursor: pointer;
+    @include display_align_justify_direction(flex, center, center, row);
+    width: 50px;
+    height: 20px;
+    margin: 31px 0 0 0;
+}
+
+.slider-control {
+    width: 38px;
+    height: 4px;
+    background-color: #d6d6d6;
+
+}
+
+.slider-control.active,
+.slider-control-wrap:hover .slider-control {
+    background-color: $colorBrand;
+}
+
+//===================== Subscribe END ================
+
+//===================== Footer BEGIN ================
+
+.footer-top {
+    @include display_align_justify_direction($display: flex, $align: "", $justify: space-between, $flex-direction: "");
+    padding: 168px 0 89px 0;
+}
+
+.footer-about {
+    margin-top: 29px;
+    width: 427px;
+    height: 180px;
+    color: $colorTextFooter;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 23px;
+    overflow: hidden;
+}
+
+.footer-nav {
+    width: 100%;
+    @include display_align_justify_direction($display: flex, $align: "", $justify: space-around, $flex-direction: "");
+}
+
+.footer-menu-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+}
+
+.footer-menu-link {
+    display: block;
+    color: $colorTextFooter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 12px;
+    padding: 15px 0;
+    border-bottom: 3px solid transparent;
+    &:hover {
+        color: $colorBrand;
+    }
+}
+
+.footer-bottom {
+    height: 79px;
+    background-color: $colorBorderButton;
+}
+
+.container-footer-bottom {
+    @include display_align_justify_direction($display: flex, $align: center, $justify: space-between, $flex-direction: "");
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.copyright {
+    color: $colorTextFooterBottom;
+}
+
+.social-link {
+    @include display_align_justify_direction($display: flex, $align: center, $justify: center, $flex-direction: "");
+    width: 32px;
+    height: 32px;
+    background-color: $colorWhite;
+    color: $colorTextFooterBottom;
+    margin-left: 8px;
+    &:hover:not(.disable) {
+        color: #f7f7f8;
+        background: $colorBrand;
+    }
+}
+
+.social-link.disable {
+    opacity: 0.3;
+}
+
+.social-networks {
+    display: flex;
+}
+
+//===================== Footer END ================
+
+//==== !!!!! Must be here, also don't work======
+.menu-show {
+    display: block;
+}
+
+//==== !!!!! Must be here, also don't work======
+
+//===================== MEDIA ================
+
+//@media screen and (max-width: 1200px) {
+//    .container {
+//        max-width: 960px;
+//        padding: 0 10px;
+//    }
+//
+//    .slider-container {
+//        background: $colorBgSite url("../img/slider.jpg") no-repeat -140px (-$heightMainMenu);
+//    }
+//
+//    .brand {
+//        font-size: 50px;
+//        line-height: 35px;
+//    }
+//
+//    .fashion {
+//        margin-top: 20px;
+//        font-size: 35px;
+//        line-height: 25px;
+//    }
+//
+//    .category {
+//        height: 760px;
+//    }
+//
+//    .category-card-img {
+//        max-width: 470px;
+//    }
+//
+//
+//    .feature-container {
+//        flex-direction: column;
+//        justify-content: center;
+//        align-items: center;
+//        height: auto;
+//    }
+//
+//    .feature-banner {
+//        width: 100%;
+//    }
+//
+//    .feature-boxes {
+//        width: 100%;
+//        flex-direction: row;
+//        justify-content: space-between;
+//        align-items: center;
+//        padding: 20px 0;
+//    }
+//
+//    .feature-box {
+//        flex-direction: column;
+//        justify-content: center;
+//        align-items: center;
+//        text-align: center;
+//        margin: 0 10px;
+//    }
+//
+//    .feature-box-icon {
+//        height: auto;
+//        width: auto;
+//    }
+//
+//    .feature-box-title {
+//        margin: 20px 0 10px 0;
+//        line-height: 17px;
+//    }
+//
+//    .feature-box-info {
+//        text-align: center;
+//    }
+//    
+//    .subscribe{
+//        margin-top: 0;
+//    }
+//}

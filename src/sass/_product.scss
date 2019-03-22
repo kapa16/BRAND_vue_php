@@ -1,0 +1,336 @@
+//================================================
+
+.catalog-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 0 110px 0;
+}
+
+.sidebar {
+    width: 243px;
+    color: $colorTextSidebar;
+}
+
+.sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 37px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0 5px 0 11px;
+    margin-bottom: 18px;
+    border-left: 5px solid $colorTextRed;
+    border-bottom: 1px solid $colorBorderSidebar;
+}
+
+.sidebar-title-active {
+    color: $colorTextRed;
+}
+
+.sidebar-submenu {
+    display: none;
+    padding: 10px 17px 30px 17px;
+}
+
+//============== Open menu ====================
+.menu-open {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .sidebar-title-caret {
+        transform: rotate(180deg);
+    }
+}
+
+.sidebar-link {
+    width: 100%;
+    display: block;
+    color: $colorTextSidebar;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+.menu-open .sidebar-title {
+    color: $colorTextRed;
+
+}
+
+.sidebar-title:hover,
+.sidebar-link:hover {
+    cursor: pointer;
+    color: $colorTextRed;
+}
+
+//============= Products =================
+
+.products {
+    margin-bottom: 43px;
+}
+
+//============= Filter ===================
+
+.products-content {
+    width: 100%;
+    margin-left: 50px;
+}
+
+.products-filter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: $colorTextSidebar;
+    &-wrap {
+        width: 100%;
+    }
+    &-title {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 25px;
+    }
+    &-value {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &-link {
+        color: $colorTextSidebar;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+.filter-label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.filter-label-checkbox,
+.products-filter-list {
+    padding: 7px 0;
+    line-height: 12px;
+    cursor: pointer;
+}
+
+.products-filter-list:not(:first-child) {
+    padding-left: 12px;
+}
+
+.products-filter-list:not(:last-child)::after {
+    content: "|";
+    margin-left: 12px;
+    color: $colorLineFilter;
+    line-height: 10px;
+}
+
+.products-filter-list:hover .products-filter-link {
+    color: $colorBrand;
+}
+
+//================= SIZE ====================
+.checkbox {
+    display: none;
+}
+
+.filter-label-checkbox {
+    height: 13px;
+    display: flex;
+    align-items: center;
+    width: 69px;
+}
+
+.filter-label {
+    color: $colorTextSidebar;
+    font-weight: 400;
+    padding-left: 9px;
+    box-sizing: border-box;
+}
+
+.filter-checkbox {
+    position: relative;
+    display: block;
+    width: 13px;
+    height: 13px;
+    border: 1px solid $colorBorderSidebar;
+    background-color: $colorWhite;
+}
+
+.checkbox:checked + .filter-checkbox::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 13px;
+    content: "\2714";
+    @include position_absolute_top_left(0, 1px);
+    color: $colorBrand;
+}
+
+.checkbox:checked + .filter-checkbox {
+    border: 1px solid $colorTextSidebar;
+}
+
+.filter-label-checkbox:hover .filter-checkbox {
+    border: 1px solid $colorTextSidebar;
+}
+
+.filter-label-checkbox:hover .filter-label {
+    color: $colorBrand;
+}
+
+//====================== Slider ==========================
+
+.products-filter-slider {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #f0f0f0;
+    margin: 32px 0 18px 0;
+}
+
+.products-filter-bar {
+    @include position_absolute_top_left(0px, 5px);
+    width: 270px;
+    height: 6px;
+    background-color: $colorBrand;
+}
+
+.products-filter-point {
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    background-color: $colorBrand;
+    border-radius: 50%;
+}
+
+.products-filter-point-left {
+    @include position_absolute_top_left(-4px, 0);
+}
+
+.products-filter-point-right {
+    @include position_absolute_top_left(-4px, 268px);
+}
+
+.price-range {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-card-hover {
+    border-radius: 3px;
+    margin: 0 4.5px;
+}
+
+.add-cart-wrap {
+    margin-bottom: 35px;
+}
+
+.reload {
+    background: url("../img/reload.svg") no-repeat;
+
+}
+
+.favorite {
+    background: url("../img/favorite.svg") no-repeat;
+}
+
+.reload,
+.favorite {
+    background-position: center;
+}
+
+//=================== SORT ======================
+
+.product-sort {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #f3f3f3;
+    margin-top: 40px;
+}
+
+.product-sort-form {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 9px;
+}
+
+.product-sort-select-wrap,
+.product-sort-label,
+.select-item-sort {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: $colorTextSidebar;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: $colorWhite;
+}
+
+.product-sort-label {
+    padding-left: 13px;
+    border: 1px solid $colorBorderSidebar;
+}
+
+.product-sort-select-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid $colorBorderSidebar;
+    margin-left: 8px;
+}
+
+.select-item-sort {
+    width: 100%;
+    border: none;
+    position: relative;
+    padding: 0 25px 0 11px;
+    background: transparent;
+}
+
+.select-item-show {
+    padding: 0 35px 0 11px;
+}
+
+.select-item-sort:hover {
+    cursor: pointer;
+}
+
+.product-sort-select-wrap:hover {
+    outline: 1px solid $colorTextRed;
+    .icon-drop-list {
+        color: $colorTextRed;
+    }
+}
+
+//===================== Pagination ====================
+
+.content-footer {
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.view-all {
+    border-radius: 3px;
+    border: 1px solid $colorTextRed;
+    color: $colorTextRed;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 46px;
+    &:hover {
+        color: $colorWhite;
+        background: $colorTextRed;
+    }
+}
+
+//=================== subscribe =====================
+
+.subscribe {
+    margin-top: 0;
+}

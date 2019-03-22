@@ -1,0 +1,55 @@
+
+.carousel
+    position: relative
+
+    &__control
+        width: 30%
+        height: 100%
+        position: absolute
+        top: 0
+
+        &:hover
+            .carousel__icon
+                cursor: pointer
+                background-color: $colorCarouselControlHover
+
+        &:active
+            .carousel__icon
+                background-color: $colorCarouselControl
+
+    &__prev
+        left: 0
+
+    &__next
+        right: 0
+
+    &__icon
+        position: absolute
+        top: 50%
+        transform: translate(-50%, -50%)
+        width: 47px
+        height: 47px
+        background: $colorCarouselControl
+
+        &:before
+            font-family: "Font Awesome 5 Free"
+            font-weight: 700
+            color: $colorWhite
+            font-size: 22px
+            line-height: 47px
+            position: absolute
+            left: 50%
+
+        &_prev
+            left: 24px
+
+            &:before
+                content: "\f104"
+                transform: translateX(-60%)
+
+        &_next
+            right: -24px
+
+            &:before
+                content: "\f105"
+                transform: translateX(-40%)

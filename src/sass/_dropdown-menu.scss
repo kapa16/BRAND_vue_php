@@ -1,0 +1,82 @@
+.dropdown-box {
+    display: flex;
+    position: absolute;
+    z-index: 10; //over header (2) and main menu (3)
+    top: 36px;
+    left: -1px;
+    border-radius: 5px;
+    border: 1px solid $colorBgSite;
+    background-color: $colorWhite;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.17);
+    padding: 20px;
+}
+
+.dropdown-flex {
+    width: 262px;
+    margin-right: 46px;
+}
+
+.dropdown-flex:last-of-type {
+    margin-right: 0;
+}
+
+.dropdown-heading {
+
+    text-transform: uppercase;
+    border-bottom: 1px solid $colorBgSite;
+    color: $colorTextDarkLighter;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0.35px;
+}
+
+//============ Triangle for dropdown menu ==================
+.dropdown-box:after {
+    content: "";
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: -6px;
+    left: 69px;
+    border-top: 1px solid $colorBgSite;
+    border-left: 1px solid $colorBgSite;
+    background-color: $colorWhite;
+    transform: rotate(45deg);
+}
+
+.dropdown-ul {
+    margin-bottom: 20px;
+}
+
+.dropdown-menu-link {
+    display: block;
+    width: 100%;
+    color: $colorTextDarkLighter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+}
+
+.dropdown-menu-link:hover {
+    color: $colorBrand;
+}
+
+.super-sale {
+    width: 255px;
+    height: 118px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+    background: url("../img/superSale.jpg") no-repeat;
+}
+
+.super-sale-text {
+    color: $colorWhite;
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.55px;
+}

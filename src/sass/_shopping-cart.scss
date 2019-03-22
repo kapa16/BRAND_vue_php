@@ -1,0 +1,226 @@
+
+.product-details-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 21px;
+}
+
+.cart-table {
+    width: 100%;
+    margin-top: 90px;
+    margin-bottom: 44px;
+}
+
+.cart-table-row {
+    @include display_align_justify_direction(flex, center, "", row);
+    align-items: stretch;
+}
+
+.cart-table-cell-header {
+    color: $colorTextDark;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+    padding: 0 0 20px 0;
+}
+
+.cart-table-cell {
+    @include display_align_justify_direction(flex, center, center, row);
+    width: 11.6%;
+    border-bottom: 1px solid $colorBorderForms;
+    text-align: center;
+    color: #656565;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 25px 0;
+
+    &:first-of-type {
+        justify-content: flex-start;
+        width: 42%;
+        text-align: left;
+    }
+}
+
+.cart-table-close-icon {
+    color: #c0c0c0;
+    font-size: 16px;
+    font-weight: 400;
+
+    &:hover {
+        cursor: pointer;
+        color: $colorBlack;
+    }
+}
+
+.product-details {
+    display: flex;
+
+    &-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &-properties {
+        margin-top: 13px;
+        color: $colorTextSidebar;
+        font-size: 13px;
+        color: #575757;
+        font-weight: 700;
+    }
+
+    &-value {
+        font-weight: 300;
+    }
+}
+
+.product-rating {
+    color: #e4af48;
+    font-size: 13px;
+    margin-top: 11px;
+    margin-bottom: 2px;
+}
+
+.cart-table-quantity {
+    width: 54px;
+    height: 30px;
+    border: 1px solid $colorBorderForms;
+    background-color: $colorWhite;
+    text-align: center;
+}
+
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-button {
+    width: 235px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 50px;
+}
+
+.checkout-form {
+    display: flex;
+    justify-content: space-between;
+    margin: 63px 0 80px 0;
+
+    &-flex {
+        width: 355px;
+    }
+
+    &-title {
+        color: $colorTextDark;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    &-select-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background-color: $colorWhite;
+        width: 100%;
+        height: 45px;
+
+        margin: 20px 0 0 0;
+    }
+
+    &-select-item {
+        color: #b1b1b1;
+        font-size: 13px;
+        font-weight: 300;
+        width: 100%;
+        height: 100%;
+        border: none;
+        position: relative;
+        padding: 0 25px 0 11px;
+        background: transparent;
+        border: 1px solid $colorBorderForms;
+
+        &:hover {
+            cursor: pointer;
+            border: 1px solid #ff0d0d;
+        }
+
+        &:focus {
+            border: 1px solid #ff0d0d;
+            color: $colorBlack;
+        }
+    }
+}
+
+.icon-drop-list {
+    color: #bdbdbd;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.button-form {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    color: #4a4a4a;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0 15px;
+    margin-top: 25px;
+}
+
+.coupon-label {
+    display: block;
+    margin: 28px 0 24px 0;
+}
+
+.proceed-checkout {
+    width: 360px;
+    background-color: #f5f3f3;
+    text-align: right;
+    padding: 40px;
+}
+
+.checkout-subtotal {
+    color: #4a4a4a;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.checkout-total {
+    color: $colorTextDark;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 14px 0 22px 0;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.checkout-total-value {
+    color: $colorBrand;
+    padding-left: 20px;
+}
+
+.checkout-subtotal-value {
+    padding-left: 20px;
+}
+
+.button-form-checkout {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 20px 40px;
+    margin-top: 17px;
+}
+
+
