@@ -1,0 +1,324 @@
+{% extends 'layout.twig' %}
+
+{% block main_menu %}
+{% endblock %}
+
+{% block main_content %}
+    <div class="slider">
+        {{ include('main_menu.twig') }}
+        <div class="container  slider-container">
+            <div class="slider-content">
+                <p class="brand">THE BRAND</p>
+                <p class="fashion">OF LUXERIOUS <span class="brand-style">FASHION</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="category">
+            <div class="category-card for-man">
+                <a href="/?page=product">
+                    <img class="category-card-img" src="img/banner1.jpg" alt="banner-man">
+                    <div class="badge">
+                        <p class="first-string">hOT dEAL</p>
+                        <p class="second-string brand-style">FOR MEN</p>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card accasories">
+                <a href="/?page=product">
+                    <img class="category-card-img" src="img/banner3.jpg" alt="banner-accesories">
+                    <div class="badge">
+                        <p class="first-string">LUXIROUS &amp; trendy</p>
+                        <p class="second-string brand-style">ACCESORIES</p>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card for-women">
+                <a href="/?page=product">
+                    <img class="category-card-img" src="img/banner2.jpg" alt="banner-accesories">
+                    <div class="badge">
+                        <p class="first-string">30% offer</p>
+                        <p class="second-string brand-style">women</p>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card for-kids">
+                <a href="/?page=product">
+                    <img class="category-card-img" src="img/banner4.jpg" alt="banner-accesories">
+                    <div class="badge">
+                        <p class="first-string">new arrivals</p>
+                        <p class="second-string brand-style">FOR kids</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="products-container">
+            <h3 class="products-title">Fetured Items</h3>
+            <p class="products-description">Shop for items based on what we featured in this week</p>
+            <div class="products">
+                <!--card of product begin-->
+                <div class="product-card" data-id="1" data-name="Mango People T-shirt" data-price="240">
+                    <a class="product-card-link" href="single-page.html">
+                        <div class="product-img-wrap">
+                            <img class="product-img" src="img/products/product1.jpg" alt="product">
+                            <div class="product-img-mask"></div>
+                        </div>
+
+                        <div class="product-card-info">
+                            <div class="product-name">
+                                <p>Mango People T-shirt</p>
+                                <p>Mango People T-shirt</p>
+                            </div>
+
+                            <div class="product-bottom">
+                                <p class="product-price">$52.00</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="far fa-star rating-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="parent-product-card">
+                        <div class="add-cart-wrap">
+                            <a href="#" class="product-card-hover">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!--card of product end-->
+                <!--card of product begin-->
+                <div class="product-card" data-id="2" data-name="Mango People T-shirt" data-price="750">
+                    <a class="product-card-link" href="single-page.html">
+                        <div class="product-img-wrap">
+                            <img class="product-img" src="img/products/product2.jpg" alt="product">
+                            <div class="product-img-mask"></div>
+                        </div>
+
+                        <div class="product-card-info">
+                            <div class="product-name">
+                                <p>Mango People T-shirt</p>
+                            </div>
+                            <div class="product-bottom">
+                                <p class="product-price">$52.00</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="parent-product-card">
+                        <div class="add-cart-wrap">
+                            <a href="#" class="product-card-hover">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!--card of product end-->
+                <!--card of product begin-->
+                <div class="product-card" data-id="3" data-name="Mango People T-shirt" data-price="345">
+                    <a class="product-card-link" href="single-page.html">
+                        <div class="product-img-wrap">
+                            <img class="product-img" src="img/products/product3.jpg" alt="product">
+                            <div class="product-img-mask"></div>
+                        </div>
+
+                        <div class="product-card-info">
+                            <div class="product-name">
+                                <p>Mango People T-shirt</p>
+                            </div>
+                            <div class="product-bottom">
+                                <p class="product-price">$52.00</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="parent-product-card">
+                        <div class="add-cart-wrap">
+                            <a href="#" class="product-card-hover">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!--card of product end-->
+                <!--card of product begin-->
+                <div class="product-card" data-id="4" data-name="Mango People T-shirt" data-price="476">
+                    <a class="product-card-link" href="single-page.html">
+                        <div class="product-img-wrap">
+                            <img class="product-img" src="img/products/product4.jpg" alt="product">
+                            <div class="product-img-mask"></div>
+                        </div>
+
+                        <div class="product-card-info">
+                            <div class="product-name">
+                                <p>Mango People T-shirt</p>
+                            </div>
+                            <div class="product-bottom">
+                                <p class="product-price">$52.00</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="parent-product-card">
+                        <div class="add-cart-wrap">
+                            <a href="#" class="product-card-hover">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!--card of product end-->
+                <!--card of product begin-->
+                <div class="product-card" data-id="5" data-name="Mango People T-shirt" data-price="265">
+                    <a class="product-card-link" href="single-page.html">
+                        <div class="product-img-wrap">
+                            <img class="product-img" src="img/products/product5.jpg" alt="product">
+                            <div class="product-img-mask"></div>
+                        </div>
+
+                        <div class="product-card-info">
+                            <div class="product-name">
+                                <p>Mango People T-shirt</p>
+                            </div>
+                            <div class="product-bottom">
+                                <p class="product-price">$52.00</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="far fa-star rating-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="parent-product-card">
+                        <div class="add-cart-wrap">
+                            <a href="#" class="product-card-hover">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!--card of product end-->
+                <!--card of product begin-->
+                <div class="product-card" data-id="6" data-name="Mango People T-shirt" data-price="875">
+                    <a class="product-card-link" href="single-page.html">
+                        <div class="product-img-wrap">
+                            <img class="product-img" src="img/products/product6.jpg" alt="product">
+                            <div class="product-img-mask"></div>
+                        </div>
+
+                        <div class="product-card-info">
+                            <div class="product-name">
+                                <p>Mango People T-shirt</p>
+                            </div>
+                            <div class="product-bottom">
+                                <p class="product-price">$52.00</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="far fa-star rating-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="parent-product-card">
+                        <div class="add-cart-wrap">
+                            <a href="#" class="product-card-hover">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!--card of product end-->
+                <!--card of product begin-->
+                <div class="product-card" data-id="7" data-name="Mango People T-shirt" data-price="900">
+                    <a class="product-card-link" href="single-page.html">
+                        <div class="product-img-wrap">
+                            <img class="product-img" src="img/products/product7.jpg" alt="product">
+                            <div class="product-img-mask"></div>
+                        </div>
+
+                        <div class="product-card-info">
+                            <div class="product-name">
+                                <p>Mango People T-shirt</p>
+                            </div>
+                            <div class="product-bottom">
+                                <p class="product-price">$52.00</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="far fa-star rating-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="parent-product-card">
+                        <div class="add-cart-wrap">
+                            <a href="#" class="product-card-hover">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!--card of product end-->
+                <!--card of product begin-->
+                <div class="product-card" data-id="8" data-name="Mango People T-shirt" data-price="546">
+                    <a class="product-card-link" href="single-page.html">
+                        <div class="product-img-wrap">
+                            <img class="product-img" src="img/products/product13.jpg" alt="product">
+                            <div class="product-img-mask"></div>
+                        </div>
+
+                        <div class="product-card-info">
+                            <div class="product-name">
+                                <p>Mango People T-shirt</p>
+                                <p>People T-shirt</p>
+                            </div>
+                            <div class="product-bottom">
+                                <p class="product-price">$52.00</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="fas fa-star rating-star"></i>
+                                    <i class="far fa-star rating-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="parent-product-card">
+                        <div class="add-cart-wrap">
+                            <a href="#" class="product-card-hover">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!--card of product end-->
+
+            </div>
+
+            <a href="/?page=product" class="button-browse-all button-brand">
+                Browse All Product
+                <i class="fas fa-long-arrow-alt-right browse-all-arrow"></i>
+            </a>
+
+        </section>
+    </div>
+{% endblock %}
