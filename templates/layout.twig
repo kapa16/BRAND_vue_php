@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<div id="app">
 {% block header %}
 <header class="header">
     {{ include('header.twig') }}
@@ -35,6 +36,9 @@
 
 {{ include('footer.twig') }}
 
+</div>
+
+{{ include('scripts.twig') }}
 </body>
 
 </html>
