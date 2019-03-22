@@ -2,6 +2,7 @@
 
 
 use Phinx\Seed\AbstractSeed;
+use Faker\Factory;
 
 class ProductsSeeder extends AbstractSeed
 {
@@ -15,6 +16,19 @@ class ProductsSeeder extends AbstractSeed
      */
     public function run()
     {
+        $faker = Factory::create();
+        $data = [];
+        for ($i = 0; $i < 100; $i++) {
+            $imgNum = $i % 20  + 1;
+            $data[] = [
+                'name'      => $faker->text(30)  ,
+                'img_src'      => "/img/products/product{$imgNum}.jpg",
+                'price'         => $faker->numberBetween(20, 130),
+                'description'    => $faker->text(100),
+                'rating'     => $faker->numberBetween(1, 5),
+            ];
+        }
 
+        $this->table('products')->insert($data)->save();
     }
 }
