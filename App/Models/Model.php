@@ -12,6 +12,9 @@ abstract class Model
 {
     public const TABLE = '';
 
+    public static $sortFields = [];
+    public static $reversSort = false;
+
     public $id;
 
     protected static function getTableName(): string
@@ -50,23 +53,50 @@ abstract class Model
         return $data;
     }
 
-    /**
-     * Получает все записи из базы данных, таблицы static::TABLE;
-     * @param array $sortFields
-     * @param bool $reversSort
-     * @return array
-     */
-    public static function getAll($sortFields = [], $reversSort = false): array
+    protected static function generateSelectQuery(int $limitFrom = 0, int $limitCount = 0): string
     {
-        $db = Db::getInstance();
         $sql = 'SELECT * FROM `' . static::getTableName() . '`';
 
-        if (count($sortFields) > 0) {
-            $strSortFields = implode(', ', $sortFields);
-            $sql .= " ORDER BY {$strSortFields} " . ($reversSort ? 'ASC' : 'DESC');
+        if (count(static::$sortFields) > 0) {
+            $strSortFields = implode(', ', static::$sortFields);
+            $sql .= " ORDER BY {$strSortFields} " . (static::$reversSort ? 'ASC' : 'DESC');
         }
 
+        if ($limitCount) {
+            $sql .= ' LIMIT :limitFrom, :limitCount';
+        }
+        if ($limitFrom || $limitCount) {
+            $sql .= ' LIMIT :limitFrom, :limitCount';
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Получает все записи из базы данных, таблицы static::TABLE;
+     * @return array
+     */
+    public static function getAll(): array
+    {
+        $db = Db::getInstance();
+        $sql = static::generateSelectQuery();
+
         return $db->queryAll($sql, [], static::class);
+    }
+
+    /**
+     * Получает лимитированное количестов записей из базы данных, таблицы static::TABLE;
+     * @param $limitFrom
+     * @param $limitCount
+     * @return array
+     */
+    public static function getLimit($limitFrom, $limitCount): array
+    {
+        $db = Db::getInstance();
+        $sql = static::generateSelectQuery($limitFrom, $limitCount);
+var_dump($sql);
+        $params = [':limitFrom' => $limitFrom, ':limitCount' => $limitCount];
+        return $db->queryAll($sql, $params, static::class);
     }
 
     /**
@@ -79,6 +109,13 @@ abstract class Model
         $db = Db::getInstance();
         $sql = 'SELECT * FROM `' . static::getTableName() . '` WHERE `id`=:id;';
         return $db->queryOne($sql, [':id' => $id], static::class);
+    }
+
+    public static function getContRows()
+    {
+        $db = Db::getInstance();
+        $sql = 'SELECT COUNT(*) FROM `' . static::getTableName() . '`';
+        return $db->exec($sql, []);
     }
 
     /**

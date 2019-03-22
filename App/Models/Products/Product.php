@@ -4,29 +4,32 @@ namespace App\Models\Products;
 
 use App\Models\Model;
 
-abstract class Product extends Model
+class Product extends Model
 {
 
     public const TABLE = 'products';
     protected static $salesRevenue;
 
-    protected $name;
-    protected $description;
-    protected $price;
-    protected $category_id;
+    public $name;
+    public $description;
+    public $price;
+    public $img_src;
+    public $rating;
 
     public function __construct(
         string $name = '',
         string $description = '',
         float $price = 0,
-        int $category_id = 1
+        string $imgSrc = '',
+        int $rating = 0
     )
 
     {
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
-        $this->category_id = $category_id;
+        $this->img_src = $imgSrc;
+        $this->rating = $rating;
     }
 
     /**
