@@ -3,28 +3,60 @@ Vue.component('product-list', {
   data() {
     return {
       products: [],
-      filtered: [],
+      pageNumber: 0,
+      countProductsOnPage: 9,
+      countProductsShow: 9,
+      countProducts: 0,
     }
   },
   methods: {
     filter(userInput) {
       const regExp = new RegExp(`${userInput}`, 'i');
-      this.filtered = this.products.filter((product) => regExp.test(product.product_name));
+      this.products = this.products.filter((product) => regExp.test(product.product_name));
+    },
+    getProducts() {
+      const limitFrom = this.pageNumber * this.countProductsShow;
+      console.log(limitFrom, this.pageNumber, this.countProductsShow);
+      const url = `/index.php?ctrl=api_product&action=getproducts&from=${limitFrom}&to=${this.countProductsShow}`;
+      this.$parent.getJson(url)
+        .then(data => {
+          this.products = [...this.products, ...data];
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getCountProducts() {
+      const url = `/index.php?ctrl=api_product&action=countproducts`;
+      this.$parent.getJson(url)
+        .then(data => {
+          console.log(data);
+          this.countProducts = data.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    changePage(direction) {
+      this.pageNumber += direction;
+      this.getProducts();
+    },
+    moreProducts() {
+      this.pageNumber++;
+      this.getProducts();
+    },
+    allProducts() {
+      this.countProductsShow = this.countProducts;
+      console.log(this.countProducts);
+      this.getProducts();
     }
   },
   mounted() {
-    this.$parent.getJson('/index.php?ctrl=api_product&from=1&to=0')
-      .then(data => {
-        this.products = [...this.products, ...data];
-        this.filtered = [...this.filtered, ...data];
-        console.log(this.filtered);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.getProducts();
+    this.getCountProducts();
   },
   template: `<div class="products catalog-container container" >
-                <div v-for="product of filtered" :key="product.id_product">
+                <div v-for="product of products" :key="product.id_product">
                     <product-item :product="product"></product-item>
                 </div>
             </div>
