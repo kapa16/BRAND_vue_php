@@ -70,7 +70,7 @@
 //============= Products =================
 
 .products {
-    margin-bottom: 43px;
+    //margin-bottom: 43px;
 }
 
 //============= Filter ===================
@@ -323,6 +323,7 @@
     font-size: 16px;
     font-weight: bold;
     padding: 12px 46px;
+    margin-left: 5px;
     &:hover {
         color: $colorWhite;
         background: $colorTextRed;

@@ -10,7 +10,7 @@
 .products {
     @include display_align_justify_direction($display: flex, $align: flex-start, $justify: space-between, $flex-direction: "");
     flex-wrap: wrap;
-    margin-bottom: 80px;
+    //margin-bottom: 80px;
     overflow: hidden;
     padding: 4px;
 
