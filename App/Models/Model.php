@@ -53,7 +53,7 @@ abstract class Model
         return $data;
     }
 
-    protected static function generateSelectQuery(int $limitFrom = 0, int $limitCount = 0): string
+    protected static function generateSelectQuery(int $limitFrom = null, int $limitCount = null): string
     {
         $sql = 'SELECT * FROM `' . static::getTableName() . '`';
 
@@ -62,11 +62,13 @@ abstract class Model
             $sql .= " ORDER BY {$strSortFields} " . (static::$reversSort ? 'ASC' : 'DESC');
         }
 
-        if ($limitCount) {
-            $sql .= ' LIMIT :limitFrom, :limitCount';
-        }
+//        if ($limitCount) {
+//            $sql .= ' LIMIT :limitFrom, :limitCount';
+//        }
         if ($limitFrom || $limitCount) {
-            $sql .= ' LIMIT :limitFrom, :limitCount';
+            // TODO Почему не работает подстановка
+            $sql .= " LIMIT {$limitFrom}, {$limitCount}";
+//            $sql .= ' LIMIT :from, :count;';
         }
 
         return $sql;
@@ -94,8 +96,9 @@ abstract class Model
     {
         $db = Db::getInstance();
         $sql = static::generateSelectQuery($limitFrom, $limitCount);
-var_dump($sql);
-        $params = [':limitFrom' => $limitFrom, ':limitCount' => $limitCount];
+        // TODO Почему не работает подстановка
+//        $params = [':from' => $limitFrom, ':count' => $limitCount];
+        $params = [];
         return $db->queryAll($sql, $params, static::class);
     }
 
@@ -111,11 +114,11 @@ var_dump($sql);
         return $db->queryOne($sql, [':id' => $id], static::class);
     }
 
-    public static function getContRows()
+    public static function getCountRows()
     {
         $db = Db::getInstance();
-        $sql = 'SELECT COUNT(*) FROM `' . static::getTableName() . '`';
-        return $db->exec($sql, []);
+        $sql = 'SELECT COUNT(*) count FROM `' . static::getTableName() . '`';
+        return $db->queryOneAssoc($sql, [])['count'];
     }
 
     /**

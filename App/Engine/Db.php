@@ -19,7 +19,7 @@ class Db
     private function __construct()
     {
         $dsn = DB_DRIVER . ':dbname=' . DB_NAME . ';host=' . DB_HOST;
-        $this->link = new \PDO($dsn, DB_USER, DB_PASSWORD);
+        $this->link = new \PDO($dsn, DB_USER, DB_PASSWORD, [\PDO::FETCH_ASSOC]);
     }
 
     public function exec(string $sql, array $params): bool
@@ -35,7 +35,7 @@ class Db
      * @param $class - имя класса дла создания экземлпяров по полученным данным
      * @return bool - выполнен запрос или нет
      */
-    public function query(string $sql, array $params, string $class): bool
+    public function queryClass(string $sql, array $params, string $class): bool
     {
         $this->sth = $this->link->prepare($sql);
         $this->sth->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
@@ -51,7 +51,7 @@ class Db
      */
     public function queryAll(string $sql, array $params, string $class): array
     {
-        $this->query($sql, $params, $class);
+        $this->queryClass($sql, $params, $class);
         return $this->sth->fetchAll();
     }
 
@@ -64,7 +64,14 @@ class Db
      */
     public function queryOne(string $sql, array $params, string $class): object
     {
-        $this->query($sql, $params, $class);
+        $this->queryClass($sql, $params, $class);
+        return $this->sth->fetch();
+    }
+
+    public function queryOneAssoc(string $sql, array $params)
+    {
+        $this->sth = $this->link->prepare($sql);
+        $this->sth->execute($params);
         return $this->sth->fetch();
     }
 
