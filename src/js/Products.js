@@ -16,7 +16,6 @@ Vue.component('product-list', {
     },
     getProducts() {
       const limitFrom = this.pageNumber * this.countProductsShow;
-      console.log(limitFrom, this.pageNumber, this.countProductsShow);
       const url = `/index.php?ctrl=api_product&action=getproducts&from=${limitFrom}&to=${this.countProductsShow}`;
       this.$parent.getJson(url)
         .then(data => {
@@ -30,7 +29,6 @@ Vue.component('product-list', {
       const url = `/index.php?ctrl=api_product&action=countproducts`;
       this.$parent.getJson(url)
         .then(data => {
-          console.log(data);
           this.countProducts = data.data;
         })
         .catch(err => {
@@ -47,7 +45,6 @@ Vue.component('product-list', {
     },
     allProducts() {
       this.countProductsShow = this.countProducts;
-      console.log(this.countProducts);
       this.getProducts();
     }
   },
@@ -59,8 +56,7 @@ Vue.component('product-list', {
                 <div v-for="product of products" :key="product.id_product">
                     <product-item :product="product"></product-item>
                 </div>
-            </div>
-`
+            </div>`
 });
 
 Vue.component('product-item', {

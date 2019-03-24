@@ -18,7 +18,7 @@ const path = {
     css: 'public/css/',
   },
   src: {
-    js: ['src/js/main.js', 'src/js/single-page.js', 'src/js/slider.js', 'src/js/Products.js'],//**/*.js',
+    js: 'src/js/**/*.js',
     style: 'src/scss/*.+(scss|sass)',
   },
   watch: {

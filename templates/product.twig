@@ -177,6 +177,8 @@
 
         <div class="content-footer">
             <div class="pagination">
+                <catalog-pagination></catalog-pagination>
+{#
                 <a href="#" class="pagination-link pagination-link-prev"><i class="fas fa-angle-left"></i></a>
                 <a href="#" class="pagination-link pagination-link-active">1</a>
                 <a href="#" class="pagination-link">2</a>
@@ -187,6 +189,7 @@
                 <a href="#" class="pagination-link pagination-link-dot">......</a>
                 <a href="#" class="pagination-link">20</a>
                 <a href="#" class="pagination-link pagination-link-next"><i class="fas fa-angle-right"></i></a>
+#}
             </div>
             <div class="flex-block">
                 <a href="#" class="view-all" @click.prevent="$root.$refs.products.moreProducts()">More...</a>
