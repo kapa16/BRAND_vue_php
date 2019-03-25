@@ -18,7 +18,7 @@ $(document).ready(() => {
   });
 
   // Корзина
-  // let cart = new Cart('json/getCart.json');
+  let cart = new Cart('json/getCart.json');
 
   // Добавление товара
   $('.add-cart-wrap').click(evt => {
