@@ -2,9 +2,7 @@
 
 namespace App\Controllers\Api;
 
-use App\Controllers\Controller;
-
-class Product extends Controller
+class Product extends ApiController
 {
     protected function actionGetProducts(): void
     {
@@ -22,13 +20,9 @@ class Product extends Controller
     {
         $action = $_GET['action'] ?? '';
 
-        switch ($action) {
-            case 'getproducts':
-                $this->actionGetProducts();
-                break;
-            case 'countproducts':
-                $this->actionGetCountProducts();
-                break;
+        if ($action) {
+            $action = 'action' . $action;
+            $this->$action();
         }
 
         if ($this->data) {
