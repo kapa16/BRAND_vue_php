@@ -9,9 +9,6 @@ abstract class Controller
     protected const TEMPLATE_NAME = '';
     protected $twig;
 
-    protected $data;
-    protected $errorMessage;
-
     /**
      * Controller constructor.
      */
@@ -30,15 +27,4 @@ abstract class Controller
         $indexTemplate = $this->twig->load(static::TEMPLATE_NAME);
         return $indexTemplate->render($data);
     }
-
-    protected function success(): string
-    {
-        return '{"result": 1, "data":' . json_encode($this->data) . ', "message": ""}';
-    }
-
-    protected function error(): string
-    {
-        return '{"result": 0}, "data": "", "message": ' . $this->errorMessage . '}';
-    }
-
 }
