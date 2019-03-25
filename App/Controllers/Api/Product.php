@@ -23,11 +23,14 @@ class Product extends ApiController
         if ($action) {
             $action = 'action' . $action;
             $this->$action();
+        } else {
+            $this->errorMessage = 'Unknown action';
         }
 
         if ($this->data) {
             echo $this->success();
         } else {
+            $this->errorMessage = 'No data';
             echo $this->error();
         }
     }
