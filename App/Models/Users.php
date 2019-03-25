@@ -8,8 +8,6 @@ namespace App\Models;
  */
 class Users extends Model
 {
-    public const TABLE = 'users';
-
     public $login;
     public $name;
     public $lastname;
@@ -21,6 +19,11 @@ class Users extends Model
         $this->name = $name;
         $this->lastname = $lastName;
         $this->email = $email;
+    }
+
+    protected static function getTableName(): string
+    {
+        return 'users';
     }
 
     /**

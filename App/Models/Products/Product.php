@@ -23,13 +23,17 @@ class Product extends Model
         string $imgSrc = '',
         int $rating = 0
     )
-
     {
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
         $this->img_src = $imgSrc;
         $this->rating = $rating;
+    }
+
+    protected static function getTableName(): string
+    {
+        return 'products';
     }
 
     /**

@@ -17,14 +17,7 @@ abstract class Model
 
     public $id;
 
-    protected static function getTableName(): string
-    {
-        if (!static::TABLE) {
-            exit('Не задано имя таблицы БД');
-        }
-
-        return static::TABLE;
-    }
+    abstract protected static function getTableName();
 
     protected function validateId(): void
     {
