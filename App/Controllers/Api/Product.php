@@ -6,22 +6,16 @@ use App\Controllers\Controller;
 
 class Product extends Controller
 {
-
-    protected function actionGetProducts()
+    protected function actionGetProducts(): void
     {
         $limitFrom = +$_GET['from'] ?? 0;
         $limitTo = +$_GET['to'] ?? 0;
-        $products = \App\Models\Products\Product::getLimit($limitFrom, $limitTo);
-        return json_encode($products);
+        $this->data = \App\Models\Products\Product::getLimit($limitFrom, $limitTo);
     }
 
-    protected function actionGetCountProducts(): string
+    protected function actionGetCountProducts(): void
     {
-        $countRows = \App\Models\Products\Product::getCountRows();
-        return '{
-        "result": 1,
-        "data": "' . $countRows . '"
-        }';
+        $this->data = \App\Models\Products\Product::getCountRows();
     }
 
     public function __invoke()
@@ -30,13 +24,17 @@ class Product extends Controller
 
         switch ($action) {
             case 'getproducts':
-                echo $this->actionGetProducts();
+                $this->actionGetProducts();
                 break;
             case 'countproducts':
-                echo $this->actionGetCountProducts();
+                $this->actionGetCountProducts();
                 break;
-            default:
-                echo '{"result": 0}';
+        }
+
+        if ($this->data) {
+            echo $this->success();
+        } else {
+            echo $this->error();
         }
     }
 }
