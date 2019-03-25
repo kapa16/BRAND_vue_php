@@ -147,10 +147,12 @@ body {
       padding: 10px 0;
     }
 
-    &-prev:hover,
-    &-next:hover,
     &-active {
       color: $colorTextRed;
     }
+  }
+
+  &-link:hover {
+    color: $colorTextRed;
   }
 }
