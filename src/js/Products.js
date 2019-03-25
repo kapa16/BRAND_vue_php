@@ -14,12 +14,20 @@ Vue.component('product-list', {
       const regExp = new RegExp(`${userInput}`, 'i');
       this.products = this.products.filter((product) => regExp.test(product.product_name));
     },
-    getProducts() {
-      const limitFrom = this.pageNumber * this.countProductsShow;
+    getProducts(fromPage = 0, addToExisting = false) {
+      const limitFrom = fromPage * this.countProductsShow;
       const url = `/index.php?ctrl=api_product&action=getproducts&from=${limitFrom}&to=${this.countProductsShow}`;
       this.$parent.getJson(url)
-        .then(data => {
-          this.products = [...this.products, ...data];
+        .then(result => {
+          if (!result.result) {
+            console.log(result.message);
+            return;
+          }
+          if (addToExisting) {
+            this.products = [...this.products, ...result.data]
+          } else {
+            this.products = result.data;
+          }
         })
         .catch(err => {
           console.log(err);
@@ -37,11 +45,11 @@ Vue.component('product-list', {
     },
     changePage(direction) {
       this.pageNumber += direction;
-      this.getProducts();
+      this.getProducts(this.pageNumber);
     },
     moreProducts() {
       this.pageNumber++;
-      this.getProducts();
+      this.getProducts(this.pageNumber, true);
     },
     allProducts() {
       this.countProductsShow = this.countProducts;
