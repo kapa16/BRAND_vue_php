@@ -3,10 +3,12 @@
 namespace App\Controllers;
 
 use App\Engine\Templater;
+use Twig\Environment;
 
 abstract class Controller
 {
     protected const TEMPLATE_NAME = '';
+    /** @var Environment */
     protected $twig;
 
     /**
@@ -21,6 +23,9 @@ abstract class Controller
      * Return view from template
      * @param $data array parameters for template
      * @return mixed
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
     protected function render($data)
     {
