@@ -21,9 +21,9 @@ abstract class Model
     {
         if (!static::TABLE) {
             exit('Не задано имя таблицы БД');
-        } else {
-            return static::TABLE;
         }
+
+        return static::TABLE;
     }
 
     protected function validateId(): void
