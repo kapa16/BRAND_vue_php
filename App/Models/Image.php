@@ -4,9 +4,6 @@ namespace App\Models;
 
 class Image extends Model
 {
-
-    public const TABLE = 'images';
-
     public $url;
     public $views;
     public $title;
@@ -25,6 +22,11 @@ class Image extends Model
         $this->views = $views;
         $this->title = $title;
         $this->size = $size;
+    }
+
+    protected static function getTableName(): string
+    {
+        return 'images';
     }
 
     public function increaseImageViews(int $count = 1): self

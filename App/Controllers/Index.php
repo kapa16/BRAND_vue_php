@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-class IndexController extends Controller
+class Index extends Controller
 {
     protected const TEMPLATE_NAME = 'index.twig';
 
     public function __invoke()
     {
-        return $this->getView([]);
+        echo $this->render([]);
     }
 }

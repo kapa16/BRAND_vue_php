@@ -3,31 +3,33 @@
 namespace App\Controllers;
 
 use App\Engine\Templater;
+use Twig\Environment;
 
 abstract class Controller
 {
-    private $templateName;
+    protected const TEMPLATE_NAME = '';
+    /** @var Environment */
+    protected $twig;
 
     /**
      * Controller constructor.
-     * @param string $templateName
      */
-    public function __construct(string $templateName)
+    public function __construct()
     {
-        $this->templateName = $templateName;
+        $this->twig = Templater::getInstance()->twig;
     }
 
     /**
      * Return view from template
      * @param $data array parameters for template
      * @return mixed
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
-    protected function getView($data)
+    protected function render($data)
     {
-        $twig = Templater::getInstance()->twig;
-        $indexTemplate = $twig->load($this->templateName);
+        $indexTemplate = $this->twig->load(static::TEMPLATE_NAME);
         return $indexTemplate->render($data);
     }
-
-
 }

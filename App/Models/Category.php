@@ -4,8 +4,6 @@ namespace App\Models;
 
 class Category extends Model
 {
-    public const TABLE = 'categories';
-
     protected $name;
     protected $discount;
     protected $parent_category_id;
@@ -15,5 +13,10 @@ class Category extends Model
         $this->name = $name;
         $this->discount = $discount;
         $this->parent_category_id = $parent_category_id;
+    }
+
+    protected static function getTableName(): string
+    {
+        return 'categories';
     }
 }

@@ -18,7 +18,7 @@ $(document).ready(() => {
   });
 
   // Корзина
-  // let cart = new Cart('json/getCart.json');
+  let cart = new Cart('json/getCart.json');
 
   // Добавление товара
   $('.add-cart-wrap').click(evt => {
@@ -39,9 +39,6 @@ $(document).ready(() => {
 
   new Vue({
     el: "#app",
-    data: {
-      title: 'Shop'
-    },
     methods: {
       getJson(url) {
         return fetch(url)

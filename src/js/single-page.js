@@ -1,7 +1,7 @@
 //= ReviewsControl.js
 //= Carousel.js
 //= SelectColor.js
-//= Pagination.js
+//= PaginationJquery.js
 
 
 $(document).ready(() => {

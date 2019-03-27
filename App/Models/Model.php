@@ -12,16 +12,12 @@ abstract class Model
 {
     public const TABLE = '';
 
+    public static $sortFields = [];
+    public static $reversSort = false;
+
     public $id;
 
-    protected static function getTableName(): string
-    {
-        if (!static::TABLE) {
-            exit('Не задано имя таблицы БД');
-        } else {
-            return static::TABLE;
-        }
-    }
+    abstract protected static function getTableName();
 
     protected function validateId(): void
     {
@@ -50,23 +46,53 @@ abstract class Model
         return $data;
     }
 
-    /**
-     * Получает все записи из базы данных, таблицы static::TABLE;
-     * @param array $sortFields
-     * @param bool $reversSort
-     * @return array
-     */
-    public static function getAll($sortFields = [], $reversSort = false): array
+    protected static function generateSelectQuery(int $limitFrom = null, int $limitCount = null): string
     {
-        $db = Db::getInstance();
         $sql = 'SELECT * FROM `' . static::getTableName() . '`';
 
-        if (count($sortFields) > 0) {
-            $strSortFields = implode(', ', $sortFields);
-            $sql .= " ORDER BY {$strSortFields} " . ($reversSort ? 'ASC' : 'DESC');
+        if (count(static::$sortFields) > 0) {
+            $strSortFields = implode(', ', static::$sortFields);
+            $sql .= " ORDER BY {$strSortFields} " . (static::$reversSort ? 'ASC' : 'DESC');
         }
 
+//        if ($limitCount) {
+//            $sql .= ' LIMIT :limitFrom, :limitCount';
+//        }
+        if ($limitFrom || $limitCount) {
+            // TODO Почему не работает подстановка
+            $sql .= " LIMIT {$limitFrom}, {$limitCount}";
+//            $sql .= ' LIMIT :from, :count;';
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Получает все записи из базы данных, таблицы static::TABLE;
+     * @return array
+     */
+    public static function getAll(): array
+    {
+        $db = Db::getInstance();
+        $sql = static::generateSelectQuery();
+
         return $db->queryAll($sql, [], static::class);
+    }
+
+    /**
+     * Получает лимитированное количестов записей из базы данных, таблицы static::TABLE;
+     * @param $limitFrom
+     * @param $limitCount
+     * @return array
+     */
+    public static function getLimit($limitFrom, $limitCount): array
+    {
+        $db = Db::getInstance();
+        $sql = static::generateSelectQuery($limitFrom, $limitCount);
+        // TODO Почему не работает подстановка
+//        $params = [':from' => $limitFrom, ':count' => $limitCount];
+        $params = [];
+        return $db->queryAll($sql, $params, static::class);
     }
 
     /**
@@ -79,6 +105,13 @@ abstract class Model
         $db = Db::getInstance();
         $sql = 'SELECT * FROM `' . static::getTableName() . '` WHERE `id`=:id;';
         return $db->queryOne($sql, [':id' => $id], static::class);
+    }
+
+    public static function getCountRows()
+    {
+        $db = Db::getInstance();
+        $sql = 'SELECT COUNT(*) count FROM `' . static::getTableName() . '`';
+        return $db->queryOneAssoc($sql, [])['count'];
     }
 
     /**

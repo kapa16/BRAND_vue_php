@@ -3,32 +3,68 @@ Vue.component('product-list', {
   data() {
     return {
       products: [],
-      filtered: [],
+      pageNumber: 0,
+      countProductsOnPage: 9,
+      countProductsShow: 9,
+      countProducts: 0,
     }
   },
   methods: {
     filter(userInput) {
       const regExp = new RegExp(`${userInput}`, 'i');
-      this.filtered = this.products.filter((product) => regExp.test(product.product_name));
+      this.products = this.products.filter((product) => regExp.test(product.product_name));
+    },
+    getProducts(fromPage = 0, addToExisting = false) {
+      const limitFrom = fromPage * this.countProductsShow;
+      const url = `/index.php?ctrl=api_product&action=getproducts&from=${limitFrom}&to=${this.countProductsShow}`;
+      this.$parent.getJson(url)
+        .then(result => {
+          if (!result.result) {
+            console.log(result.message);
+            return;
+          }
+          if (addToExisting) {
+            this.products = [...this.products, ...result.data]
+          } else {
+            this.products = result.data;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getCountProducts() {
+      const url = `/index.php?ctrl=api_product&action=countproducts`;
+      this.$parent.getJson(url)
+        .then(data => {
+          this.countProducts = data.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    changePage(direction) {
+      this.pageNumber += direction;
+      this.getProducts(this.pageNumber);
+    },
+    moreProducts() {
+      this.pageNumber++;
+      this.getProducts(this.pageNumber, true);
+    },
+    allProducts() {
+      this.countProductsShow = this.countProducts;
+      this.getProducts();
     }
   },
   mounted() {
-    this.$parent.getJson('/index.php?ctrl=api_product&from=1&to=0')
-      .then(data => {
-        this.products = [...this.products, ...data];
-        this.filtered = [...this.filtered, ...data];
-        console.log(this.filtered);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.getProducts();
+    this.getCountProducts();
   },
   template: `<div class="products catalog-container container" >
-                <div v-for="product of filtered" :key="product.id_product">
+                <div v-for="product of products" :key="product.id_product">
                     <product-item :product="product"></product-item>
                 </div>
-            </div>
-`
+            </div>`
 });
 
 Vue.component('product-item', {

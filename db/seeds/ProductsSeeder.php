@@ -18,7 +18,7 @@ class ProductsSeeder extends AbstractSeed
     {
         $faker = Factory::create();
         $data = [];
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $imgNum = $i % 20  + 1;
             $data[] = [
                 'name'      => $faker->text(30)  ,

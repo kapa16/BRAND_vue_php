@@ -21,6 +21,10 @@ body {
   height: 100%;
 }
 
+.flex-block {
+  display: flex;
+}
+
 //Для ссылок меню
 .menu-link {
   display: block;
@@ -116,6 +120,7 @@ body {
       color: #aaaaaa;
     }
 
+    /*
     &-prev:before,
     &-next:before {
         font-family: "Font Awesome 5 Free";
@@ -136,15 +141,18 @@ body {
       content: "\f105";
       transform: translateX(-40%);
     }
+    */
 
     &-dot {
       padding: 10px 0;
     }
 
-    &-prev:hover,
-    &-next:hover,
     &-active {
       color: $colorTextRed;
     }
+  }
+
+  &-link:hover {
+    color: $colorTextRed;
   }
 }
